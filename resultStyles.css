@@ -1,0 +1,51 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    font-family: 'Arial', sans-serif;
+    color: white;
+}
+
+        .container {
+            background-color: #ffffff; /* White background for the container */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 600px; /* Max width for larger screens */
+        }
+
+        h1 {
+            font-size: 1em;
+            margin-bottom: 20px;
+            color: #6a5acd; /* A pleasant color for the title */
+        }
+
+        #fortuneResult {
+            font-size: 1.5em;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #e6e6fa; /* Light lavender background */
+            border: 1px solid #d3d3d3;
+            border-radius: 5px;
+            color: #483d8b; /* Dark slate blue for the text */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #6a5acd; /* Matching color with the title */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #5c4dc3; /* Darker shade on hover */
+        }

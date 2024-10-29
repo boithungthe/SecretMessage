@@ -4,60 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Fortune</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff; /* Light background color */
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #333; /* Dark text color */
-        }
-
-        .container {
-            background-color: #ffffff; /* White background for the container */
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            width: 90%;
-            max-width: 600px; /* Max width for larger screens */
-        }
-
-        h1 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            color: #6a5acd; /* A pleasant color for the title */
-        }
-
-        #fortuneResult {
-            font-size: 1.5em;
-            margin: 20px 0;
-            padding: 10px;
-            background-color: #e6e6fa; /* Light lavender background */
-            border: 1px solid #d3d3d3;
-            border-radius: 5px;
-            color: #483d8b; /* Dark slate blue for the text */
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 1em;
-            background-color: #6a5acd; /* Matching color with the title */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #5c4dc3; /* Darker shade on hover */
-        }
-    </style>
+    <link rel="stylesheet" href="resultStyles.css"> <!-- Link to your CSS file -->
 </head>
 <body>
 <div class="container">
@@ -68,17 +15,19 @@
 
 <script>
     function goBack() {
-        window.history.back();
-    }
+          window.history.back();
+      }
 
-    const params = new URLSearchParams(window.location.search);
-    const name = params.get('name');
+      // Get the 'fortuneResult' parameter from the URL
+      const params = new URLSearchParams(window.location.search);
+      const fortuneResult = params.get('fortuneResult');
 
-    if (name) {
-        document.getElementById('fortuneResult').textContent = `${name}, your soulmate is waiting for you in a magical place!`;
-    } else {
-        document.getElementById('fortuneResult').textContent = "No name provided.";
-    }
+      // Check if 'fortuneResult' exists and display it
+      if (fortuneResult) {
+          document.getElementById('fortuneResult').textContent = decodeURIComponent(fortuneResult);
+      } else {
+          document.getElementById('fortuneResult').textContent = "No fortune available. Please try again.";
+      }
 </script>
 </body>
 </html>
