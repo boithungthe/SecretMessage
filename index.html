@@ -3,39 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message Form</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        input[type="text"] {
-            width: 300px;
-            padding: 10px;
-            margin-right: 10px;
-        }
-        button {
-            padding: 10px 15px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <title>Soulmate Fortune Teller</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-<h1>Send a Message</h1>
-<input type="text" id="message" placeholder="Type your message here..." />
-<button id="sendButton">Send</button>
-
-<script>
-    document.getElementById("sendButton").addEventListener("click", function() {
-        const message = document.getElementById("message").value;
-        alert("Message sent: " + message);
-    });
-</script>
+<div class="container">
+    <h1>Find Your Soulmate</h1>
+    <textarea id="nameText" placeholder="Enter your name..."></textarea>
+    <button id="tellFortuneButton">Tell Me!</button>
+</div>
 </body>
 </html>
