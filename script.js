@@ -17,7 +17,8 @@ function tellFortune() {
             "Find your soulmate in " + randomPlace + ", Zotung",
             "Your partner is waiting for you in " + randomPlace + ", Zotung"
         ];
-        const randomMessage = nameText + ", " + messages[Math.floor(Math.random() * messages.length)] + ", Chin.";
+        let randomGenMgs = messages[Math.floor(Math.random() * messages.length)];
+        const randomMessage = nameText + ", " + randomGenMgs + ", Chin.";
 
         // Ensure 'fortuneResult' is passed, not 'name'
         window.location.href = "result.html?fortuneResult=" + encodeURIComponent(randomMessage);
