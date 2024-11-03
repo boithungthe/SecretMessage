@@ -13,5 +13,21 @@
     <textarea id="nameText" placeholder="Enter your name..."></textarea>
     <button id="tellFortuneButton">Tell Me!</button>
 </div>
+<script>
+    function goBack() {
+          window.history.back();
+      }
+
+      // Get the 'fortuneResult' parameter from the URL
+      const params = new URLSearchParams(window.location.search);
+      const fortuneResult = params.get('fortuneResult');
+
+      // Check if 'fortuneResult' exists and display it
+      if (fortuneResult) {
+          document.getElementById('fortuneResult').textContent = decodeURIComponent(fortuneResult);
+      } else {
+          document.getElementById('fortuneResult').textContent = "No fortune available. Please try again.";
+      }
+</script>
 </body>
 </html>
