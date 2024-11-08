@@ -5,76 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soulmate Fortune Teller</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
 <div class="container">
     <h1>Find Your Soulmate</h1>
-    <div id="login-section" style="display: none;">
-        <button onclick="facebookLogin()">Login with Facebook</button>
-    </div>
-    <div id="fortune-section" style="display: none;">
-        <textarea id="nameText" placeholder="Enter your name..."></textarea>
-        <button id="tellFortuneButton">Tell Me!</button>
-        <p id="fortuneResult"></p>
-    </div>
+    <textarea id="nameText" placeholder="Enter your name..."></textarea>
+    <button id="tellFortuneButton">Tell Me!</button>
 </div>
-
-<!-- Facebook SDK Script -->
 <script>
-    // Load the Facebook SDK
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId: '1089908622547283', // Replace with your actual App ID
-            cookie: true,
-            xfbml: true,
-            version: 'v17.0'
-        });
+    function goBack() {
+          window.history.back();
+      }
 
-        // Check login status on page load
-        FB.getLoginStatus(function(response) {
-            if (response.status === 'connected') {
-                document.getElementById('login-section').style.display = 'none';
-                document.getElementById('fortune-section').style.display = 'block';
-            } else {
-                document.getElementById('login-section').style.display = 'block';
-                document.getElementById('fortune-section').style.display = 'none';
-            }
-        });
-    };
+      // Get the 'fortuneResult' parameter from the URL
+      const params = new URLSearchParams(window.location.search);
+      const fortuneResult = params.get('fortuneResult');
 
-    (function(d, s, id){
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
-    // Facebook login function
-    function facebookLogin() {
-        FB.login(function(response) {
-            if (response.authResponse) {
-                // User is logged in
-                document.getElementById('login-section').style.display = 'none';
-                document.getElementById('fortune-section').style.display = 'block';
-                checkFortuneResult();
-            } else {
-                alert('Login failed. Please try again.');
-            }
-        }, {scope: 'public_profile,email'});
-    }
-
-    // Function to display fortune if available
-    function checkFortuneResult() {
-        const params = new URLSearchParams(window.location.search);
-        const fortuneResult = params.get('fortuneResult');
-
-        if (fortuneResult) {
-            document.getElementById('fortuneResult').textContent = decodeURIComponent(fortuneResult);
-        } else {
-            document.getElementById('fortuneResult').textContent = "No fortune available. Please try again.";
-        }
-    }
+      // Check if 'fortuneResult' exists and display it
+      if (fortuneResult) {
+          document.getElementById('fortuneResult').textContent = decodeURIComponent(fortuneResult);
+      } else {
+          document.getElementById('fortuneResult').textContent = "No fortune available. Please try again.";
+      }
 </script>
 </body>
 </html>
