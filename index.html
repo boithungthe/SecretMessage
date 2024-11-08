@@ -6,6 +6,7 @@
     <title>Soulmate Fortune Teller</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
+
 </head>
 <body>
 <div class="container">
@@ -13,21 +14,38 @@
     <textarea id="nameText" placeholder="Enter your name..."></textarea>
     <button id="tellFortuneButton">Tell Me!</button>
 </div>
+
 <script>
     function goBack() {
-          window.history.back();
-      }
+        window.history.back();
+    }
 
-      // Get the 'fortuneResult' parameter from the URL
-      const params = new URLSearchParams(window.location.search);
-      const fortuneResult = params.get('fortuneResult');
+    const params = new URLSearchParams(window.location.search);
+    const fortuneResult = params.get('fortuneResult');
+    if (fortuneResult) {
+        document.getElementById('fortuneResult').textContent = decodeURIComponent(fortuneResult);
+    } else {
+        document.getElementById('fortuneResult').textContent = "No fortune available. Please try again.";
+    }
 
-      // Check if 'fortuneResult' exists and display it
-      if (fortuneResult) {
-          document.getElementById('fortuneResult').textContent = decodeURIComponent(fortuneResult);
-      } else {
-          document.getElementById('fortuneResult').textContent = "No fortune available. Please try again.";
-      }
+    // Create hearts dynamically
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.textContent = '❤';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+        heart.style.fontSize = Math.random() * 10 + 10 + 'px';
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }
+
+    // Generate hearts at intervals
+    setInterval(createHeart, 300);
 </script>
 </body>
 </html>

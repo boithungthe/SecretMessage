@@ -21,7 +21,11 @@ function tellFortune() {
             "Sorry ;(, seems like you will never find one."
         ];
         let randomGenMgs = messages[Math.floor(Math.random() * messages.length)];
-        const randomMessage = nameText + ", " + randomGenMgs + ", Chin. and starts with '" + randomLetter + "'.";
+        let randomMessage = nameText + ", " + randomGenMgs + ", Chin. and starts with '" + randomLetter + "'.";
+        let equal = randomGenMgs == messages[5];
+        if (equal) {
+               randomMessage = nameText + ", " + randomGenMgs;
+        };
 
         // Ensure 'fortuneResult' is passed, not 'name'
         window.location.href = "result.html?fortuneResult=" + encodeURIComponent(randomMessage);
